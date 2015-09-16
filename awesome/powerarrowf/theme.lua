@@ -20,7 +20,7 @@ theme.fg_urgent     = "#3F3F3F"
 
 theme.border_width  = 1
 theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_focus  = "#66B5CE"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -73,14 +73,19 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = pathToConfig .. "powerarrowf/candy_bean_wallpaper.jpg"
-
 -- You can use your own layout icons like this:
-theme.layout_floating  = pathToConfig .. "powerarrowf/layouts/floating.png"
-theme.layout_tilebottom = pathToConfig .. "/powerarrowf/layouts/tilebottom.png"
-theme.layout_tileleft   = pathToConfig .. "powerarrowf/layouts/tileleft.png"
-theme.layout_tile = pathToConfig .. "powerarrowf/layouts/tile.png"
-theme.layout_tiletop = pathToConfig .. "powerarrowf/layouts/tiletop.png"
+theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
+theme.layout_fairv = "/usr/share/awesome/themes/default/layouts/fairvw.png"
+theme.layout_floating  = "/usr/share/awesome/themes/default/layouts/floatingw.png"
+theme.layout_magnifier = "/usr/share/awesome/themes/default/layouts/magnifierw.png"
+theme.layout_max = "/usr/share/awesome/themes/default/layouts/maxw.png"
+theme.layout_fullscreen = "/usr/share/awesome/themes/default/layouts/fullscreenw.png"
+theme.layout_tilebottom = "/usr/share/awesome/themes/default/layouts/tilebottomw.png"
+theme.layout_tileleft   = "/usr/share/awesome/themes/default/layouts/tileleftw.png"
+theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
+theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
+theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiralw.png"
+theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 
 
 
@@ -95,9 +100,6 @@ theme.arr6 = pathToConfig .. "powerarrowf/icons/arr6.png"
 theme.arr7 = pathToConfig .. "powerarrowf/icons/arr7.png"
 theme.arr8 = pathToConfig .. "powerarrowf/icons/arr8.png"
 theme.arr9 = pathToConfig .. "powerarrowf/icons/arr9.png"
-
--- The clock icon:
-theme.clock = pathToConfig .. "powerarrowf/icons/myclocknew.png"
 
 --{{ For the wifi widget icons }} --
 theme.nethigh = pathToConfig .. "powerarrowf/icons/nethigh.png"
@@ -133,6 +135,6 @@ theme.mailopen = pathToConfig .. "powerarrowf/icons/mailopen.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = "Circle-Float"
 
 return theme

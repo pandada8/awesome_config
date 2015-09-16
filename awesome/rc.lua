@@ -93,6 +93,13 @@ local layouts =
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -109,7 +116,7 @@ local layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3}, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9}, s, layouts[2])
 end
 -- }}}
 
@@ -238,7 +245,7 @@ end, 15)
 
 -- to make GMail pop up when pressed:
 mailicon:buttons(awful.util.table.join(awful.button({ }, 1,
-function () awful.util.spawn_with_shell(browser .. " gmail.com") end)))
+function () awful.util.spawn_with_shell(browser .. " inbox.google.com") end)))
 
 
 -- Create a wibox for each screen and add it
@@ -363,30 +370,14 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "a",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "d",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
--- {{ Opens Chromium }} --
-
-awful.key({ "Control", "Shift"}, "c", function() awful.util.spawn("chromium") end),
-awful.key({ "Control", "Shift"}, "n", function() awful.util.spawn("chromium -incognito") end),
-
--- {{ Shuts down Computer }} --
-
-awful.key({ "Control",        }, "Escape", function() awful.util.spawn("systemctl poweroff") end),
-
--- {{ Spawns Skype }} --
-
-awful.key({ "Control", "Shift"}, "s", function() awful.util.spawn("skype") end),
-
--- {{ Spawns Sublime }} --
-
-awful.key({ "Control", "Shift"}, "b", function() awful.util.spawn("/opt/sublime-text/sublime_text") end),
 
 -- {{ Volume Control }} --
 
-awful.key({     }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+", false) end),
+awful.key({     }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+", false) end), -- TODO Using pulse audio
 awful.key({     }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%-", false) end),
 awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
 
@@ -453,7 +444,6 @@ awful.key({     }, "XF86AudioMute", function() awful.util.spawn("amixer set Mast
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
-
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
@@ -636,13 +626,9 @@ function run_once(cmd)
         awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
--- {{ I need redshift to save my eyes }} -
-run_once("redshift -l 49.26:-123.23")
-awful.util.spawn_with_shell("xmodmap ~/.speedswapper")
+-- {{ Run the compose manager }} -
+run_once("compton")
 
--- {{ Turns off the terminal bell }} --
-awful.util.spawn_with_shell("/usr/bin/xset b off")
-
--- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
--- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
